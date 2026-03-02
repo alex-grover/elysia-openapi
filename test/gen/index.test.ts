@@ -648,4 +648,228 @@ describe('Gen > Type Gen', () => {
 			}
 		})
 	})
+
+	it('nested', async () => {
+		const reference = fromTypes('test/gen/nested.ts', { debug: true })()
+
+		expect(serializable(reference)).toEqual({
+			'/': {
+				derive: {},
+				get: {
+					body: {},
+					headers: {},
+					params: {
+						properties: {},
+						type: 'object'
+					},
+					query: {},
+					response: {
+						'204': {},
+						'422': {
+							properties: {
+								expected: {
+									type: 'string'
+								},
+								found: {},
+								message: {
+									type: 'string'
+								},
+								on: {
+									type: 'string'
+								},
+								property: {
+									type: 'string'
+								},
+								summary: {
+									type: 'string'
+								},
+								type: {
+									const: 'validation',
+									type: 'string'
+								}
+							},
+							required: ['type', 'on'],
+							type: 'object'
+						}
+					}
+				},
+				resolve: {},
+				response: {},
+				schema: {},
+				standaloneschema: {}
+			},
+			'/character': {
+				post: {
+					body: {
+						type: 'string'
+					},
+					headers: {},
+					params: {
+						properties: {},
+						type: 'object'
+					},
+					query: {},
+					response: {
+						'200': {
+							properties: {
+								name: {
+									const: 'Lilith',
+									type: 'string'
+								}
+							},
+							required: ['name'],
+							type: 'object'
+						},
+						'422': {
+							properties: {
+								expected: {
+									type: 'string'
+								},
+								found: {},
+								message: {
+									type: 'string'
+								},
+								on: {
+									type: 'string'
+								},
+								property: {
+									type: 'string'
+								},
+								summary: {
+									type: 'string'
+								},
+								type: {
+									const: 'validation',
+									type: 'string'
+								}
+							},
+							required: ['type', 'on'],
+							type: 'object'
+						}
+					}
+				}
+			},
+			'/const': {
+				get: {
+					body: {},
+					headers: {},
+					params: {
+						properties: {},
+						type: 'object'
+					},
+					query: {},
+					response: {
+						'200': {
+							properties: {
+								friends: {
+									additionalItems: false,
+									items: [
+										{
+											const: 'Sartre',
+											type: 'string'
+										},
+										{
+											const: 'Fouco',
+											type: 'string'
+										}
+									],
+									maxItems: 2,
+									minItems: 2,
+									type: 'array'
+								},
+								name: {
+									const: 'Lilith',
+									type: 'string'
+								}
+							},
+							required: ['name', 'friends'],
+							type: 'object'
+						}
+					}
+				}
+			},
+			'/json': {
+				post: {
+					body: {
+						properties: {
+							hello: {
+								type: 'string'
+							}
+						},
+						required: ['hello'],
+						type: 'object'
+					},
+					headers: {},
+					params: {
+						properties: {},
+						type: 'object'
+					},
+					query: {},
+					response: {
+						'200': {
+							properties: {
+								hello: {
+									type: 'string'
+								}
+							},
+							required: ['hello'],
+							type: 'object'
+						},
+						'418': {
+							const: "I'm a teapot",
+							type: 'string'
+						},
+						'422': {
+							properties: {
+								expected: {
+									type: 'string'
+								},
+								found: {},
+								message: {
+									type: 'string'
+								},
+								on: {
+									type: 'string'
+								},
+								property: {
+									type: 'string'
+								},
+								summary: {
+									type: 'string'
+								},
+								type: {
+									const: 'validation',
+									type: 'string'
+								}
+							},
+							required: ['type', 'on'],
+							type: 'object'
+						}
+					}
+				}
+			},
+			'/no-manual': {
+				get: {
+					body: {},
+					headers: {},
+					params: {
+						properties: {},
+						type: 'object'
+					},
+					query: {},
+					response: {
+						'200': {
+							properties: {
+								name: {
+									type: 'string'
+								}
+							},
+							required: ['name'],
+							type: 'object'
+						}
+					}
+				}
+			}
+		})
+	})
 })
