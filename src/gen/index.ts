@@ -326,8 +326,8 @@ export const fromTypes =
 					join(
 						tmpRoot,
 						'dist',
-						// remove leading like src or something similar
-						fileName.slice(fileName.indexOf('/') + 1)
+						// remove leading path in case file is in a nested directory
+						fileName.slice(fileName.lastIndexOf('/') + 1)
 					)
 
 				let existed = fs.existsSync(targetFile)

@@ -650,7 +650,7 @@ describe('Gen > Type Gen', () => {
 	})
 
 	it('nested', async () => {
-		const reference = fromTypes('test/gen/nested.ts', { debug: true })()
+		const reference = fromTypes('test/gen/nested.ts')()
 
 		expect(serializable(reference)).toEqual({
 			'/': {
